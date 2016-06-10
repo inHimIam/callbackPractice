@@ -1,14 +1,16 @@
-/* In this repo your job is to write functions to make each function call work properly.
-Below is a sample problem 
+//In this repo your job is to write functions to make each function call work properly.
+//Below is a sample problem 
 
   //code here for sayHi
-
+function sayHi(str, cb) {
+  cb(str);
+}
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay);
    });
    
 
-and what you should write is the sayHi function that makes the code above work, 
+//and what you should write is the sayHi function that makes the code above work, 
     
     
    var sayHi = function(str, cb){
@@ -20,12 +22,14 @@ and what you should write is the sayHi function that makes the code above work,
    });
     
     
-*/
+
 
 
 
   //Code Here for first
-  
+  var first = function(arr, cb) {
+    cb(arr[0]);
+  }
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -40,7 +44,10 @@ first(names, function(firstName){
 
 
   //Code Here for last
-
+var last = function(last, cb) {
+  debugger;
+  cb(last[last.length - 1]);
+}
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
 });
@@ -57,7 +64,9 @@ last(names, function(lastName){
 
 
   //Code Here for multiply
-
+function multiply(x, y, callmeback) {
+  callmeback(x * y);
+}
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
 })
@@ -73,7 +82,22 @@ multiply(4, 3, function(answer){
 
 
   //Code Here for contains
-
+  function contains(namesArray, theName, cBack){
+    // First solution: 
+    // for (var i = 0; i < namesArray.length; i++) {
+    //   if (namesArray[i] === theName) {
+    //     return cBack(true); 
+    //   }
+    // }
+    
+    // Second solution:
+    if (namesArray.indexOf(theName) != -1) {
+      return cBack(true);
+    }
+    
+    return cBack(false);
+  }
+  
 contains(names, 'Colt', function(result){
   if(result === true){
     console.log('Colt is in the array');
@@ -92,12 +116,24 @@ contains(names, 'Colt', function(result){
 
 
     //Code Here for uniq
+    
+    function uniq(namesArray, cb) { 
+      var newNames = [];
+      for (var i = 0; i < namesArray.length; i++) {
+      if (newNames.indexOf(arr[i]) === - 1) {
+      newNames.push(arr[i]);
+    }
+      
+    }
+      return cb()
 
+    }
+   
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
 
-
+indexOf
 
 
 
@@ -107,7 +143,9 @@ uniq(names, function(uniqArr){
 
 
     //Code Here for each
-
+function each() {
+  
+}
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
@@ -123,7 +161,12 @@ each(names, function(item, indice){
 
 
  //code here for getUserById
-
+function getUserById(theUser, findId, callBack) {
+  if (theUser.id === findId) {
+    callBack(theUser.indexOf);
+    
+  }
+};
 var users = [
   {
     id: '12d',
